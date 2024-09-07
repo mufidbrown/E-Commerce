@@ -3,6 +3,8 @@ package com.ecommerce.mufid.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 public class ProductDTO {
@@ -12,6 +14,9 @@ public class ProductDTO {
         private String productDescription;
         private Double price;
         private Long categoryId;
+//        private Set<PriceDTO> prices;
+
+
 
         // Getters and Setters
 }
