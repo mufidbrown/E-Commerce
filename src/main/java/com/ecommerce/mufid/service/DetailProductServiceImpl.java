@@ -8,6 +8,7 @@ import com.ecommerce.mufid.entity.Price;
 import com.ecommerce.mufid.entity.Product;
 import com.ecommerce.mufid.entity.mapper.DetailProductMapper;
 import com.ecommerce.mufid.repository.DetailProductRepository;
+import com.ecommerce.mufid.repository.PriceRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,24 +20,24 @@ import java.util.Optional;
 public class DetailProductServiceImpl implements DetailProductService {
 
     private final DetailProductRepository detailProductRepository;
-    private final PriceService priceService;
+    private final PriceRepository priceRepository;
     private final DetailProductMapper detailProductMapper;
 
     @Autowired
     public DetailProductServiceImpl(DetailProductRepository detailProductRepository,
-                                    PriceService priceService,
+                                    PriceRepository priceRepository,
                                     DetailProductMapper detailProductMapper) {
         this.detailProductRepository = detailProductRepository;
-        this.priceService = priceService;
+        this.priceRepository = priceRepository;
         this.detailProductMapper = detailProductMapper;
     }
 
     @Override
     @Transactional
     public DetailProductDTO createDetailProduct(DetailProductDTO detailProductDTO) {
-        PriceDTO priceDTO = priceService.createPrice(detailProductDTO.getPrice()); // Create or get existing price
-        DetailProduct detailProduct = detailProductMapper.toEntity(detailProductDTO);
-        detailProduct.setPrice(priceDTO);
+        Price price = priceRepository.findById(detailProductDTO.getPrice().getId())
+                .orElseThrow(() -> new RuntimeException("Price not found"));
+        DetailProduct detailProduct = detailProductMapper.toEntity(detailProductDTO, price);
         DetailProduct savedDetailProduct = detailProductRepository.save(detailProduct);
         return detailProductMapper.toDto(savedDetailProduct);
     }

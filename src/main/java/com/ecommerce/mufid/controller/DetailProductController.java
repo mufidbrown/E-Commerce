@@ -38,6 +38,7 @@ public class DetailProductController {
         return new ResponseEntity<>(createdDetailProduct, HttpStatus.CREATED);
     }
 
+
     @PutMapping("/{id}")
     public ResponseEntity<DetailProductDTO> updateDetailProduct(@PathVariable Long id, @RequestBody DetailProductDTO detailProductDTO) {
         DetailProductDTO updatedDetailProduct = detailProductService.updateDetailProduct(id, detailProductDTO);
