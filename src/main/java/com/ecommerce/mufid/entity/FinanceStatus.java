@@ -2,8 +2,9 @@ package com.ecommerce.mufid.entity;
 
 public enum FinanceStatus {
 
-    NEW,
-    REVISI,
-    DONE
+    PENDING,
+    PAID,
+    REJECTED
+
 
 }
