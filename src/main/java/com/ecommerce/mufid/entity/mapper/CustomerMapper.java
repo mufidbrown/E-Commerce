@@ -2,7 +2,9 @@ package com.ecommerce.mufid.entity.mapper;
 
 import com.ecommerce.mufid.dto.CustomerDTO;
 import com.ecommerce.mufid.entity.Customer;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CustomerMapper {
 
     public CustomerDTO toDto(Customer customer) {

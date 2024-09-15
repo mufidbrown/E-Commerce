@@ -5,6 +5,7 @@ import com.ecommerce.mufid.entity.Quotation;
 import com.ecommerce.mufid.entity.mapper.QuotationMapper;
 import com.ecommerce.mufid.repository.QuotationRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 @Transactional
 public class QuotationServiceImpl implements QuotationService {
 
+    @Autowired
     private final QuotationRepository quotationRepository;
     private final QuotationMapper quotationMapper;
 
