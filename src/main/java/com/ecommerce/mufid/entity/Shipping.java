@@ -27,14 +27,14 @@ public class Shipping {
     private String type;
 
     @CreationTimestamp
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "created_at")
     private Timestamp createdAt;
 
     @UpdateTimestamp
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updated_at")
     private Timestamp updatedAt;
 
     @ManyToOne
-    @JoinColumn(name = "logistic_id", nullable = false)
+    @JoinColumn(name = "logistic_id")
     private Logistic logistic;
 }

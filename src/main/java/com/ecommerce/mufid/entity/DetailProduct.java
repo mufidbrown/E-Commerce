@@ -34,4 +34,8 @@ public class DetailProduct {
     @OneToOne
     @JoinColumn(name = "price_id")
     private Price price;
+
+    @ManyToOne
+    @JoinColumn(name = "quotation_id")
+    private Quotation quotation;
 }

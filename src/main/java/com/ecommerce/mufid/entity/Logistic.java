@@ -25,14 +25,14 @@ public class Logistic {
     private String name;
 
     @CreationTimestamp
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "created_at")
     private Timestamp createdAt;
 
     @UpdateTimestamp
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updated_at")
     private Timestamp updatedAt;
 
-    @OneToMany(mappedBy = "logistic", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "logistic")
     private List<Shipping> shippings = new ArrayList<>();
 
 }
