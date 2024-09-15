@@ -23,7 +23,8 @@ public class Quotation {
 
     private String nomor;
 
-    private QuotationType type;
+    @Enumerated(EnumType.STRING)
+    private QuotationType quotationType;
 
     private int total;
 
@@ -41,10 +42,12 @@ public class Quotation {
 
     private String notes;
 
+    @Enumerated(EnumType.STRING)
     private FinanceStatus financeStatus;
 
     private String financeNote;
 
+    @Enumerated(EnumType.STRING)
     private LogisticStatus logisticStatus;
 
     @CreationTimestamp
