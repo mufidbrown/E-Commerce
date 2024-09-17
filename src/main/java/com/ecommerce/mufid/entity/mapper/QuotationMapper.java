@@ -1,10 +1,7 @@
 package com.ecommerce.mufid.entity.mapper;
 
 import com.ecommerce.mufid.dto.QuotationDTO;
-import com.ecommerce.mufid.entity.FinanceStatus;
-import com.ecommerce.mufid.entity.LogisticStatus;
-import com.ecommerce.mufid.entity.Quotation;
-import com.ecommerce.mufid.entity.QuotationType;
+import com.ecommerce.mufid.entity.*;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -17,7 +14,6 @@ public class QuotationMapper {
         dto.setQuotationType(quotation.getQuotationType() != null ? quotation.getQuotationType().name() : null); // Enum to String
         dto.setTotal(quotation.getTotal());
         dto.setTax(quotation.getTax());
-        dto.setShippingId(quotation.getShipping().getId());
         dto.setAdditionalShipping(quotation.getAdditionalShipping());
         dto.setGrandTotal(quotation.getGrandTotal());
         dto.setGrandBerat(quotation.getGrandBerat());
@@ -27,10 +23,11 @@ public class QuotationMapper {
         dto.setFinanceStatus(quotation.getFinanceStatus() != null ? quotation.getFinanceStatus().name() : null); // Enum to String
         dto.setFinanceNote(quotation.getFinanceNote());
         dto.setLogisticStatus(quotation.getFinanceStatus() != null ? quotation.getLogisticStatus().name() : null); // Enum to String
+        dto.setShippingId(quotation.getShipping().getId());
+        dto.setCustomerId(quotation.getCustomer().getCustomerId());
         return dto;
     }
-
-    public Quotation toEntity(QuotationDTO dto) {
+    public Quotation toEntity(QuotationDTO dto, Shipping shipping, Customer customer) {
         Quotation quotation = new Quotation();
         quotation.setNomor(dto.getNomor());
         quotation.setQuotationType(dto.getQuotationType() != null ? QuotationType.valueOf(dto.getQuotationType()) : null); // String to Enum
@@ -44,6 +41,8 @@ public class QuotationMapper {
         quotation.setFinanceStatus(dto.getFinanceStatus() != null ? FinanceStatus.valueOf(dto.getFinanceStatus()) : null); // String to Enum
         quotation.setFinanceNote(dto.getFinanceNote());
         quotation.setLogisticStatus(dto.getFinanceStatus() != null ? LogisticStatus.valueOf(dto.getLogisticStatus()) : null); // String to Enum
+        quotation.setShipping(shipping);
+        quotation.setCustomer(customer);
         return quotation;
     }
 }

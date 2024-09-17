@@ -12,7 +12,6 @@ public class QuotationDTO {
     private String quotationType;
     private int total;
     private int tax;
-    private Long shippingId;
     private Integer additionalShipping;
     private int grandTotal;
     private double grandBerat;
@@ -22,5 +21,7 @@ public class QuotationDTO {
     private String financeStatus;
     private String financeNote;
     private String logisticStatus;
+    private Long shippingId;
+    private Long customerId;
 
 }

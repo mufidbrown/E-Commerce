@@ -17,7 +17,7 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<CustomerDTO> createCustomer(@RequestBody CustomerDTO customerDTO) {
         CustomerDTO createdCustomer = customerService.createCustomer(customerDTO);
         return new ResponseEntity<>(createdCustomer, HttpStatus.CREATED);
